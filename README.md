@@ -64,3 +64,15 @@ La relazione è di uno (categoies) a molti (posts). La tabella dipendente è dun
 
 ## Refactoring per le viste con la categoria
 - Create, Edit
+
+## 08 Aprile
+
+### Creazione e gestione tabella tags
+- Creazione tabella tags solito procedimento, migration
+- Creazione model Tag
+- Popolo tabella tag con Seeder
+
+### Gestione relazione many to many posts-tags
+- relazione definita nei model post e tag
+- creazione migration tabella model *php artisan make:migration create_post_tag_table*
+- All'interno della migration pivot, tolgo i $table originari e inserisco le due chiavi provenienti da post e tag per relazione -> aggiungo anche indice che tenga traccia dei due id in coppia

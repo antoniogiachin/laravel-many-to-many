@@ -120,7 +120,11 @@ class PostController extends Controller
     {
         //prelevo le categorie dal db
         $categories = Category::all();
-        return view('admin.post.edit', compact('post', 'categories'));
+
+        //recupero e passo i tags
+        $tags = Tag::all();
+
+        return view('admin.post.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -137,7 +141,8 @@ class PostController extends Controller
             [
                 "title" => 'required|min:2',
                 "content"=> 'required|min:10',
-                "category_id"=>'nullable|exists:categories,id'
+                "category_id"=>'nullable|exists:categories,id',
+                "tagsId" => 'nullable|exists:tags,id',
             ]
         );
         //salvo in data il contenuto form

@@ -36,6 +36,25 @@
                     @endforeach
                 </select>
             </div>
+
+             {{-- checkbox per tags, stampo una checkbox per ogni tag --}}
+             @foreach ($tags as $tag )
+                {{-- id, for e value impostati su $tag->id --}}
+
+                {{-- se ho commesso un errore nella compilazione del form  gestisco old come se fosse un create -> chiedo di rendere checked solo i $tag->id presenti nell'array tagsId --}}
+                @if ($errors->any())
+                    <div class="form-check mb-2">
+                        <input {{ in_array($tag->id, old('tagsId', [])) ? 'checked' : '' }} name="tagsId[]" class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="{{ $tag->id }}">
+                        <label class="form-check-label" for="{{ $tag->id }}"> {{ $tag->name }} </label>
+                    </div>
+                @else
+                    <div class="form-check mb-2">
+                        {{-- se i tags di questo post includono quelli selezionati metitli su checked --}}
+                        <input {{ $post->tags->contains($tag->id) ? 'checked' : '' }} name="tagsId[]" class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="{{ $tag->id }}">
+                        <label class="form-check-label" for="{{ $tag->id }}"> {{ $tag->name }} </label>
+                    </div>    
+                @endif
+             @endforeach
     
             {{-- bottone submit --}}
             <button type="submit" class="btn btn-primary">Salva</button>

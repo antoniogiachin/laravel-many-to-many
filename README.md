@@ -83,3 +83,5 @@ La relazione è di uno (categoies) a molti (posts). La tabella dipendente è dun
 - Gestione store -> postController ->validazioni
 - Gestione store -> postController -> faccio sync
 - Visualizzo in post.index e post.show  anche i tag -> utilizzando in blade la funzione tags presente nel model di post.
+- Gestione edit -> passo ad edit i tags
+- Gestione update

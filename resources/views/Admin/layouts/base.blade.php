@@ -39,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('admin.posts.index') }}">Gestione Post</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.tag.index') }}">Gestione Tag</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

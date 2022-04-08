@@ -37,6 +37,10 @@ Route::middleware('auth')
 
     //rotte post
     Route::resource('posts', 'PostController');
+
+    // rotte tag
+    Route::resource('tag', 'TagController');
+
 });
 
 // rotta di fallback su guest.home, accetto any dove per any intendo qualsiasi rotta ".*"

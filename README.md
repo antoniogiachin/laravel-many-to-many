@@ -85,3 +85,8 @@ La relazione è di uno (categoies) a molti (posts). La tabella dipendente è dun
 - Visualizzo in post.index e post.show  anche i tag -> utilizzando in blade la funzione tags presente nel model di post.
 - Gestione edit -> passo ad edit i tags
 - Gestione update
+
+## Gestione rotte dei tags
+- Creo controller dei tags *php artisan make:controller --resource Admin/TagController*
+- gestisco rotte in web.php e aggiungo rotta per i tags nella navbar in layouts
+- gestisco show e index tag

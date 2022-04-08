@@ -23,7 +23,8 @@
                 <th scope="col">Titolo</th>
                 <th scope="col">Contenuto</th>
                 <th scope="col">Slug</th>
-                <th scope="col">Cateogria</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Tags</th>
                 <th scope="col">Azioni</th>
               </tr>
             </thead>
@@ -37,8 +38,13 @@
                     {{-- il contenuto mostro solo i primi 30 caratteri usando la funzione substr di php --}}
                     <td>{{ substr($post->content, 0, 30) }}</td>
                     <td>{{ $post->slug }}</td>
-                    {{-- laravel sa già a cosa riferirsi --}}
-                    <td>{{ $post->category->name }}</td>
+                    {{-- laravel sa già a cosa riferirsi, gestisco con operatore caso null --}}
+                    <td>{{  ($post->category) ? $post->category->name : 'Nessuna categoria definita!' }}</td>
+                    <td>
+                      @foreach ($post->tags as $tag)
+                        <span class="badge rounded-pill bg-primary">{{ $tag->name }}</span>  
+                      @endforeach
+                    </td>
                     <td class="d-flex gap-1">
                       {{-- show --}}
                       <a href="{{ route('admin.posts.show', $post->id) }}" class="btn btn-success">Vedi</a>

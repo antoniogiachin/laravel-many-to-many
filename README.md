@@ -76,3 +76,10 @@ La relazione è di uno (categoies) a molti (posts). La tabella dipendente è dun
 - relazione definita nei model post e tag
 - creazione migration tabella model *php artisan make:migration create_post_tag_table*
 - All'interno della migration pivot, tolgo i $table originari e inserisco le due chiavi provenienti da post e tag per relazione -> aggiungo anche indice che tenga traccia dei due id in coppia
+
+### Gestione Post aggiunta dei tag
+- Gestione create -> post controller -> recupero tutti i tags e li passo alla vista
+- Gestione create -> nella vista preparo la checkbox con i tags
+- Gestione store -> postController ->validazioni
+- Gestione store -> postController -> faccio sync
+- Visualizzo in post.index e post.show  anche i tag -> utilizzando in blade la funzione tags presente nel model di post.

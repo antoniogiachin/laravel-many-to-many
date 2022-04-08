@@ -33,7 +33,20 @@
                     @endforeach
                 </select>
             </div>
-    
+
+            {{-- checkbox per tags, stampo una checkbox per ogni tag --}}
+            @foreach ($tags as $tag )
+            {{-- id, for e valu impostati su $tag->id --}}
+                <div class="form-check mb-2">
+                    {{-- GESTIONE NAME: nel campo name mettiamo un array vuoto-> diamo la istruzione a html di restituirci un array con i valori check passati(nel caso gli $tag->id) --}}
+                    {{-- GESTIONE OLD: verifico in array tagsId è presente $tag->id, nel caso imposto su checked altrimenti no --}}
+                    <input {{in_array($tag->id, old('tagsId', [])) ? 'checked' : ''}} name="tagsId[]" class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="{{ $tag->id }}">
+                    <label class="form-check-label" for="{{ $tag->id }}">
+                    {{ $tag->name }}
+                    </label>
+                </div>
+            @endforeach
+            
             {{-- bottone submit --}}
             <button type="submit" class="btn btn-primary">Salva</button>
         </form>
